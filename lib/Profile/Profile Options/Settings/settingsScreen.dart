@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:health_guide/Profile/measurementScreen.dart';
+import 'package:health_guide/Profile/Profile%20Options/Settings/aboutUsScreen.dart';
+import 'package:health_guide/Profile/Profile%20Options/Settings/accountScreen.dart';
+import 'package:health_guide/Profile/Profile%20Options/Settings/appVersionScreen.dart';
+import 'package:health_guide/Profile/Profile%20Options/Settings/communicationScreen.dart';
+import 'package:health_guide/Profile/Profile%20Options/Settings/helpScreen.dart';
+import 'package:health_guide/Profile/Profile%20Options/Settings/logoutScreen.dart';
+import 'package:health_guide/Profile/Profile%20Options/Settings/measurementScreen.dart';
+import 'package:health_guide/Profile/Profile%20Options/Settings/privacyPolicy.dart';
+import 'package:health_guide/Profile/Profile%20Options/Settings/refreshScreen.dart';
 
 class SettingScreen extends StatefulWidget {
   @override
@@ -38,23 +46,23 @@ class _SettingScreenState extends State<SettingScreen> {
               child: Column(
                 children: [
                   _buildListTile(
-                      'Communication', ReportsPage()),
+                      'Communication', CommunicationScreen()),
                   _buildDivider(),
                   _buildListTile('Units & Measures', UnitsMeasurementsScreen()),
                   _buildDivider(),
-                  _buildListTile('Refresh', ReportsPage()),
+                  _buildListTile('Refresh', RefreshScreen()),
                   _buildDivider(),
-                  _buildListTile('About us', ReportsPage()),
+                  _buildListTile('About us', AboutUsScreen()),
                   _buildDivider(),
-                  _buildListTile('App version', ReportsPage()),
+                  _buildListTile('App version', AppVersionScreen()),
                   _buildDivider(),
-                  _buildListTile('Privacy Policy', ReportsPage()),
+                  _buildListTile('Privacy Policy', PrivacyPolicyScreen()),
                   _buildDivider(),
-                  _buildListTile('Help', ReportsPage()),
+                  _buildListTile('Help', HelpScreen()),
                   _buildDivider(),
-                  _buildListTile('Account', ReportsPage()),
+                  _buildListTile('Account', AccountScreen()),
                   _buildDivider(),
-                  _buildListTile('Logout', ReportsPage()),
+                  _buildListTile('Logout', LogoutScreen()),
                 ],
               ),
             ),

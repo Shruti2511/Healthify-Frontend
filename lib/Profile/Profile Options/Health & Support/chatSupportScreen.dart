@@ -24,28 +24,49 @@ class _ChatSupportScreenState extends State<ChatSupportScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat Support'),
-        backgroundColor: Colors.blue,
+        title: Text(
+          'Chat Support',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        backgroundColor: Color.fromARGB(255, 9, 19, 157),
       ),
       body: Column(
         children: [
+          SizedBox(height: 12),
           Expanded(
             child: ListView.builder(
               itemCount: _messages.length,
               itemBuilder: (context, index) {
                 final message = _messages[index];
+                final isSent = message['type'] == 'sent';
                 return Align(
-                  alignment: message['type'] == 'sent' ? Alignment.centerRight : Alignment.centerLeft,
+                  alignment: isSent ? Alignment.centerRight : Alignment.centerLeft,
                   child: Container(
-                    padding: EdgeInsets.all(12.0),
-                    margin: EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+                    padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 14.0),
+                    margin: EdgeInsets.symmetric(vertical: 6.0, horizontal: 8.0),
+                    constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
                     decoration: BoxDecoration(
-                      color: message['type'] == 'sent' ? Colors.blue : Colors.grey[300],
-                      borderRadius: BorderRadius.circular(8.0),
+                      color: isSent ? Color.fromARGB(255, 9, 19, 157) : Colors.grey[300],
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        topRight: Radius.circular(12),
+                        bottomLeft: isSent ? Radius.circular(12) : Radius.circular(0),
+                        bottomRight: isSent ? Radius.circular(0) : Radius.circular(12),
+                      ),
                     ),
                     child: Text(
                       message['message']!,
-                      style: TextStyle(color: message['type'] == 'sent' ? Colors.white : Colors.black),
+                      style: TextStyle(color: isSent ? Colors.white : Colors.black),
                     ),
                   ),
                 );
@@ -79,3 +100,4 @@ class _ChatSupportScreenState extends State<ChatSupportScreen> {
     );
   }
 }
+

@@ -13,15 +13,14 @@ class GoalScreen extends StatelessWidget {
             fontSize: 20,
           ),
         ),
-        centerTitle: true, 
+        centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back,
-              color: Colors.white), 
+          icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Color.fromARGB(255, 9, 19, 157), 
+        backgroundColor: Color.fromARGB(255, 9, 19, 157),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -78,12 +77,24 @@ class GoalCard extends StatelessWidget {
             SizedBox(height: 10.0),
             Column(
               children: details.map((detail) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(detail['label']!, style: TextStyle(fontSize: 14.0)),
-                    Text(detail['value']!, style: TextStyle(fontSize: 14.0)),
-                  ],
+                return Container(
+                  color: Color.fromARGB(255, 195, 192, 192), // Light grey background color
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 12.0),
+                        child: Text(detail['label']!,
+                            style: TextStyle(fontSize: 14.0)),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 12.0),
+                        child: Text(detail['value']!,
+                            style: TextStyle(fontSize: 14.0)),
+                      ),
+                    ],
+                  ),
                 );
               }).toList(),
             ),

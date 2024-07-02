@@ -6,10 +6,10 @@ class UnitsMeasurementsScreen extends StatefulWidget {
 }
 
 class _UnitsMeasurementsScreenState extends State<UnitsMeasurementsScreen> {
-  String selectedWeightUnit = 'Kilograms';
-  String selectedHeightUnit = 'Centimeters';
-  String selectedDistanceUnit = 'Kilometers';
-  String selectedVolumeUnit = 'Millilitres';
+  String selectedWeightUnit = 'Kilograms (Kg)';
+  String selectedHeightUnit = 'Centimeters (cms)';
+  String selectedDistanceUnit = 'Kilometers (km)';
+  String selectedVolumeUnit = 'Millilitres (ml)';
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +23,14 @@ class _UnitsMeasurementsScreenState extends State<UnitsMeasurementsScreen> {
             fontSize: 20,
           ),
         ),
-        centerTitle: true, 
+        centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back,
-              color: Colors.white), 
+          icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Color.fromARGB(255, 9, 19, 157), 
+        backgroundColor: Color.fromARGB(255, 9, 19, 157),
       ),
       body: ListView(
         children: [
@@ -70,10 +69,13 @@ class _UnitsMeasurementsScreenState extends State<UnitsMeasurementsScreen> {
           children: [
             Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ...options.map((option) {
-              return ListTile(
-                title: Text(option),
-                trailing: option == selectedOption ? Image.asset('assets/tick.png', width: 20) : null,
-                onTap: () => onChanged(option),
+              return Container(
+                color: option == selectedOption ? Colors.grey[300] : Colors.transparent,
+                child: ListTile(
+                  title: Text(option),
+                  trailing: option == selectedOption ? Image.asset('assets/tick.png', width: 20) : null,
+                  onTap: () => onChanged(option),
+                ),
               );
             }).toList(),
           ],
@@ -82,3 +84,4 @@ class _UnitsMeasurementsScreenState extends State<UnitsMeasurementsScreen> {
     );
   }
 }
+
